@@ -2,13 +2,11 @@ package com.coreflow.ai.controller;
 
 import com.coreflow.config.ai.OrderAiToolsConfig;
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/ai")
+@CrossOrigin(origins = "http://localhost:4200")
 public class OpenAiChatController {
 
     private final ChatClient chatClient;

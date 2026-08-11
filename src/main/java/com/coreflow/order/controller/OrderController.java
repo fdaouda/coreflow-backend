@@ -15,6 +15,7 @@ import java.util.UUID;
 
 @Controller
 @RequestMapping("/orders")
+@CrossOrigin(origins = "http://localhost:4200")
 public class OrderController {
     private final OrderService orderService;
 

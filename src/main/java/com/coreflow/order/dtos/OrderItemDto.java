@@ -1,4 +1,4 @@
-package com.coreflow.order.controller.dto;
+package com.coreflow.order.dtos;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;

@@ -1,4 +1,4 @@
-package com.coreflow.order.controller.dto;
+package com.coreflow.order.dtos;
 
 import com.coreflow.order.domain.OrderStatus;
 

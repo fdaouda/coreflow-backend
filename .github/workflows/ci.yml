@@ -1,0 +1,45 @@
+name: CoreFlow Backend CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "main", "master", "develop" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build-and-test:
+    name: Build Java & Run Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Récupérer le code source du projet
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # 2. Configurer le JDK 17 avec Temurin
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: 'maven' # Cache automatique du dépôt Maven local
+
+      # 3. Compiler et exécuter tous les tests unitaires
+      - name: Build with Maven
+        run: mvn -B clean verify
+
+      # 4. Vérifier la création de l'artefact (.jar)
+      - name: Check JAR generation
+        run: ls -la target/*.jar
+
+  docker-build-check:
+    name: Verify Docker Image Build
+    needs: build-and-test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Build Docker Image
+        run: docker build -t coreflow-backend:latest .

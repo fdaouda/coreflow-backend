@@ -1,7 +1,7 @@
 package com.coreflow.order.mapper;
 
-import com.coreflow.order.controller.dto.CreateOrderRequest;
-import com.coreflow.order.controller.dto.OrderResponse;
+import com.coreflow.order.dtos.CreateOrderRequest;
+import com.coreflow.order.dtos.OrderResponse;
 import com.coreflow.order.domain.Order;
 import com.coreflow.order.domain.OrderStatus;
 

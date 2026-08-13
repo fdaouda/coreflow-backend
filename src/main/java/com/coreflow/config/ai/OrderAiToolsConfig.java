@@ -1,6 +1,6 @@
 package com.coreflow.config.ai;
 
-import com.coreflow.order.controller.dto.OrderResponse;
+import com.coreflow.order.dtos.OrderResponse;
 import com.coreflow.order.service.OrderService;
 import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.stereotype.Component;

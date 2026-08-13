@@ -1,6 +1,8 @@
 spring:
   application:
     name: coreflow
+  main:
+    allow-bean-definition-overriding: true
   datasource:
     url: jdbc:postgresql://localhost:5432/coreflow
     username: coreflow
@@ -41,6 +43,13 @@ spring:
         options:
           model: gpt-4o-mini
           temperature: 0.2
+aws:
+  region: eu-west-3
+  s3:
+    bucket-name: coreflow-invoices
+    endpoint: http://localhost:4566 # URL de LocalStack (à remplacer par null/vide en prod AWS)
+    access-key: test
+    secret-key: test
 management:
   endpoints:
     web:

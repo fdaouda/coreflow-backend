@@ -53,3 +53,17 @@ services:
       - GF_SECURITY_ADMIN_PASSWORD=admin
     depends_on:
       - prometheus
+
+  localstack:
+    container_name: localstack-main
+    image: localstack/localstack
+    ports:
+      - "127.0.0.1:4566:4566"            # Port principal (edge)
+      - "127.0.0.1:4510-4559:4510-4559"  # Ports pour les services externes (ex: Lambda)
+    environment:
+      - LOCALSTACK_AUTH_TOKEN=${LOCALSTACK_AUTH_TOKEN}
+      - DEBUG=${DEBUG:-0}
+      - SERVICES=s3,lambda,dynamodb,sqs,sns, logs   # adapte à tes besoins
+    volumes:
+      - "${LOCALSTACK_VOLUME_DIR:-./volume}:/var/lib/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"

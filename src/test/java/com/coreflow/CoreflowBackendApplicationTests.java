@@ -1,27 +1,23 @@
 package com.coreflow;
 
-import com.coreflow.order.event.OrderProducer;
-import com.coreflow.order.repository.OrderRepository;
-import com.coreflow.order.service.OrderService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.context.ActiveProfiles;
+import software.amazon.awssdk.services.cloudwatchlogs.CloudWatchLogsClient;
+import software.amazon.awssdk.services.s3.S3Client;
 
 @ExtendWith(MockitoExtension.class)
 @ActiveProfiles("test") // <-- Utilise la configuration de test
 class CoreflowBackendApplicationTests {
 
+	// Seuls les clients AWS nécessitent encore un Mock pour éviter l'appel HTTP vers LocalStack
 	@Mock
-	private OrderRepository orderRepository;
+	private S3Client s3Client;
 
 	@Mock
-	private OrderProducer orderProducer;
-
-	@InjectMocks
-	private OrderService orderService;
+	private CloudWatchLogsClient cloudWatchLogsClient;
 
 	@Test
 	void contextLoads() {

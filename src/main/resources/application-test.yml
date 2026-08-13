@@ -1,9 +1,30 @@
 spring:
-  # Désactiver les vérifications bloquantes BDD / MQ pendant les tests de contexte
-  autoconfigure:
-    exclude:
-      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
-      - org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
+  # 1. Base de données H2 rapide en mémoire RAM pour les tests
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=PostgreSQL
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+  flyway:
+    enabled: false # On désactive Flyway pour les tests simples
+
+  # 2. Désactiver le démarrage automatique des écouteurs de messages
+  kafka:
+    listener:
+      auto-startup: false
+  rabbitmq:
+    listener:
+      simple:
+        auto-startup: false
+
+  # 3. Clé fictive pour passer l'initialisation de Spring AI
+  ai:
+    openai:
+      api-key: sk-dummy-key-for-ci-tests-only
 
 aws:
   s3:

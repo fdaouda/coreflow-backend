@@ -21,8 +21,6 @@ public class OrderAiToolsConfig {
     }
 
     public record OrderStatusResponse(String orderId, String status){}
-    public record OrderByCustomerIdResponse(List<String> orderIds){}
-
 
     @Tool(name = "getOrderStatusTool", description = "Permet de récupérer le status d'un commande à partir de son identifiant (orderId)")
     public OrderStatusResponse getOrderStatusTool(String orderId) {

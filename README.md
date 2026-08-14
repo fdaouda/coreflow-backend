@@ -1,6 +1,3 @@
-Voici le fichier `README.md` complet et structuré à placer à la racine de ton dépôt `coreflow-backend` :
-
-```markdown
 # 🚀 CoreFlow — Plateforme SaaS de Gestion de Commandes, Événements & Agent IA
 
 [![Build Status](https://github.com/fdaouda/coreflow-backend/actions/workflows/ci.yml/badge.svg)](https://github.com/fdaouda/coreflow-backend/actions)
@@ -9,7 +6,7 @@ Voici le fichier `README.md` complet et structuré à placer à la racine de ton
 ![Angular](https://img.shields.io/badge/Angular-18-red)
 ![Architecture](https://img.shields.io/badge/Architecture-Event--Driven-blue)
 
-**CoreFlow** est une plateforme SaaS Fullstack événementielle conçue pour le traitement de commandes à haut débit, le messaging résilient et l'automatisation par Agent IA[cite: 1, 3]. 
+**CoreFlow** est une plateforme SaaS Fullstack événementielle conçue pour le traitement de commandes à haut débit, le messaging résilient et l'automatisation par Agent IA[cite: 1, 3].
 
 Le projet est structuré en **deux dépôts distincts (Multi-Repository Architecture)** :
 
@@ -238,27 +235,19 @@ L'infrastructure repose sur 7 conteneurs Docker orchestrés :
 | Service | Image Docker | Port(s) Exposé(s) | Description |
 | --- | --- | --- | --- |
 | **PostgreSQL** | `postgres:15` | `5432` | BDD Principale (`coreflow` / `coreflow`)
-
 |
 | **Zookeeper** | `confluentinc/cp-zookeeper:7.5.0` | `2181` | Coordination du cluster Kafka
-
 |
 | **Kafka** | `confluentinc/cp-kafka:7.5.0` | `9092` | Broker de messages événementiels
-
 |
 | **RabbitMQ** | `rabbitmq:3-management` | `5672`, `15672` | Messaging asynchrone & Dashboard UI
-
 |
 | **Prometheus** | `prom/prometheus:latest` | `9090` | Collecte des métriques Spring Actuator
-
 |
 | **Grafana** | `grafana/grafana:latest` | `3000` | Dashboards de monitoring JVM & HTTP (`admin`/`admin`)
-
 |
 | **LocalStack** | `localstack/localstack` | `4566` | Émulation Cloud AWS (S3, CloudWatch, Lambda, SQS)
-
 |
-
 ---
 
 ## 🛠️ Stack Technique Globale
@@ -359,7 +348,5 @@ Le pipeline GitHub Actions (`.github/workflows/ci.yml`) s'exécute automatiqueme
 
 
 3. **Docker Multi-Stage Build :** Compilation isolée du JAR (`maven:3.9-eclipse-temurin-17`) et conteneurisation d'une image Alpine ultra-légère (`eclipse-temurin:17-jdk-alpine`).
-
-```
 
 ```
